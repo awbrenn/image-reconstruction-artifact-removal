@@ -276,6 +276,8 @@ void handleKey(unsigned char key, int x, int y) {
     }
     else if ((key == 'w' or key == 'W') and OUTPUT_FILENAME != NULL)
         writeImage(OUTPUT_PIXMAP, OUTPUT_FILENAME, IMAGE_WIDTH, IMAGE_HEIGHT);
+    else if ((key == 'w' or key == 'W') and OUTPUT_FILENAME == NULL)
+        handleError("Output image unspecified.\nTo write to output image use:\n $> ./warp input.img output.img", 0);
     else if ((key == 'r' or key == 'R')) {
         if (SWITCH_IMAGE == 0)
             SWITCH_IMAGE = 1;
