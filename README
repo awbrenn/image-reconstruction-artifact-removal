@@ -1,0 +1,48 @@
+Lab 07
+Author:   Austin Brennan
+Email:    awbrenn@g.clemson.edu
+Class:    CPSC 4040 - Levine
+Due Date: November 21st, 2014
+
+------
+warper
+------
+
+Program Description:
+    The program reads an input image and performs a warp based on the following inverse function.
+
+    u(row, col) = IMAGE_WIDTH * ((1.0 - sqrt(1.0-(col/IMAGE_WIDTH))) * (1.6 + 0.5 * cos((2 * PI * row) / IMAGE_HEIGHT)))
+    v(row, col) = IMAGE_HEIGHT * ((1.0 - sqrt(1.0-(row/IMAGE_HEIGHT))) * (1.6 + 0.5 * cos((2 * PI * col) / IMAGE_WIDTH)))
+
+    Pressing the 'r' key fixes the reconstruction artifacts in the output image using bilinear interpolation.
+
+
+Compilation:
+    $> make
+
+
+Use Cases:
+    $> ./warp input.img [output.img]
+
+
+Commands:
+    'r' fixes the reconstruction artifacts in the output image with bilinear interpolation
+    'u' undoes the bilinear interpolation
+    'w' writes the current image displayed in glut to an output file (if specified)
+
+
+Repair Strategy:
+    For my repair strategy I decided to target the reconstruction artifacts by implementing bilinear interpolation
+    The color of each pixel is determined by a weighted sum of the colors of the four surrounding pixels using
+    the area of rectangles produced by the mapped point and the four corner positions surrounding it.
+
+    This strategy makes the squares.png look less "jaggy" in the areas that is being stretched. It also is noticeable
+    in the construction.tiff in areas such as the construction workers helmet and some of the stretched support beams.
+
+
+Known Bugs:
+    - N/A
+
+
+Additional Information:
+    - Nothing in the advanced section is implemented.
