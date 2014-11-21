@@ -181,7 +181,7 @@ void drawImage() {
 /*
     Populates the output image based on the inverse warp function
  */
-void populateOutputPixmap(pixel ** &input_pixmap, pixel ** &output_pixmap) {
+void performSimpleWarp(pixel ** &input_pixmap, pixel ** &output_pixmap) {
     int u, v; // u and v coordinates of the input image
 
     for (int row = 0; row < IMAGE_HEIGHT; row++)
@@ -343,7 +343,7 @@ int main(int argc, char *argv[]) {
     initializePixmap(FIXED_PIXMAP, IMAGE_WIDTH, IMAGE_HEIGHT);
 
     // apply the warping function without artifact removal to unfixed  pixmap
-    populateOutputPixmap(ORIGINAL_PIXMAP, UNFIXED_PIXMAP);
+    performSimpleWarp(ORIGINAL_PIXMAP, UNFIXED_PIXMAP);
 
     // copy the unfixed pixmap to the output pixmap
     for (int row = 0; row < IMAGE_HEIGHT; row++)
